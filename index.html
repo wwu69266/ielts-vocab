@@ -43,6 +43,10 @@
 
   <!-- ============ 仪表盘 ============ -->
   <section id="view-dash" class="view is-active">
+    <div class="dash-banner">
+      <span class="dash-banner-txt">数据只保存在本机浏览器：清缓存或换设备前，请先点右侧按钮导出 JSON 备份。</span>
+      <button class="btn primary" id="btnBackupTop">备份数据（导出 JSON）</button>
+    </div>
     <div class="grid grid-2">
       <div class="card" id="todayPanel"></div>
       <div class="card" id="dashStats"></div>
@@ -272,9 +276,10 @@
         <button class="btn danger" id="resetBtn">重置学习进度</button>
       </div>
       <input type="file" id="impFile" accept=".json,.csv" hidden />
-      <p class="muted small" style="margin-top:12px">
-        数据全部保存在本机浏览器 IndexedDB（库名 <code>ielts_vocab</code>），不上传服务器。换设备请用「导出全部数据」→ 新设备「导入备份」。
-      </p>
+      <div class="notice" style="margin-top:12px">
+        <strong>清缓存 / 换设备 / 重装浏览器前，必须先点「导出全部数据（JSON）」备份！</strong>
+        数据只在本机浏览器 IndexedDB（库名 <code>ielts_vocab</code>），不上传任何服务器；不备份就会丢失。新设备用「导入备份」恢复。
+      </div>
     </div>
   </section>
 

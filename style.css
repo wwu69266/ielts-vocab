@@ -169,6 +169,10 @@ main{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
   background:var(--warn-soft);border-radius:8px;padding:8px 12px;font-size:13px;margin-bottom:12px;
 }
 .notice.danger{border-left-color:var(--danger);background:var(--danger-soft)}
+.dash-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  background:var(--warn-soft);border:1px solid var(--warn);border-left:4px solid var(--warn);
+  border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:16px}
+.dash-banner-txt{font-size:14px;color:var(--text);line-height:1.5}
 
 /* ---------- 学习卡片 ---------- */
 .study-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}

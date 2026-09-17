@@ -1366,6 +1366,7 @@ function bindStatic() {
   var bEc = $('bankExportCsv'); if (bEc) bEc.addEventListener('click', exportWordsCSV);
   var bImp = $('bankImport'); if (bImp) bImp.addEventListener('click', function () { $('impFile').click(); });
   var ea = $('expAll'); if (ea) ea.addEventListener('click', exportAll);
+  var bbt = $('btnBackupTop'); if (bbt) bbt.addEventListener('click', exportAll);
   var ew = $('expWordsCsv'); if (ew) ew.addEventListener('click', exportWordsCSV);
   var ib = $('impBtn'); if (ib) ib.addEventListener('click', function () { $('impFile').click(); });
   var rs = $('resetBtn');
