@@ -196,6 +196,9 @@ main{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
 .ex{margin:8px 0}
 .ex .en{font-size:15px}
 .ex .cn{font-size:13px;color:var(--muted)}
+.ex-src{display:inline-block;margin-top:4px;font-size:11px;line-height:1.6;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:0 8px;background:var(--panel-2)}
+.ex-hl{background:var(--primary-soft);color:var(--primary);border-radius:4px;padding:0 3px;font-weight:600}
 .rate-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
 .rate{
   border:1px solid var(--border);background:var(--panel-2);border-radius:12px;
