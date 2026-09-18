@@ -540,7 +540,7 @@ function refreshExViews() {
   var v = S.view;
   if (v === 'study') renderStudy();
   else if (v === 'bank') renderBank();
-  else if (v === 'nb') renderNotebook();
+  else if (v === 'notebook') renderNotebook();
 }
 function exWordRe(word) {
   var w = String(word || '').toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
