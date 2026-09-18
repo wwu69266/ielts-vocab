@@ -44,8 +44,11 @@
   <!-- ============ 仪表盘 ============ -->
   <section id="view-dash" class="view is-active">
     <div class="dash-banner">
-      <span class="dash-banner-txt">数据只保存在本机浏览器：清缓存或换设备前，请先点右侧按钮导出 JSON 备份。</span>
-      <button class="btn primary" id="btnBackupTop">备份数据（导出 JSON）</button>
+      <span class="dash-banner-txt" id="dashBackupTip">数据只保存在本机浏览器：清缓存或换设备前，请先导出 JSON 备份。</span>
+      <div class="row-actions">
+        <button class="btn primary" id="btnBackupTop">备份数据（导出 JSON）</button>
+        <button class="btn" id="btnRestoreTop">导入恢复</button>
+      </div>
     </div>
     <div class="grid grid-2">
       <div class="card" id="todayPanel"></div>
