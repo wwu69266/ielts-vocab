@@ -1,0 +1,27 @@
+/* 例句分片 j — 自动生成，勿手工编辑。来源：Tatoeba(CC-BY 2.0) / dictionaryapi.dev(CC BY-SA 3.0) */
+window.IELTS_EX = window.IELTS_EX || {};
+Object.assign(window.IELTS_EX, {
+"jack":[{"en":"No other boy in our class is more studious than Jack.","zh":"我们班级里没有比杰克更勤奋的男孩了。","source":"tatoeba"},{"en":"Jack is the most intelligent boy in the class.","zh":"杰克是班里最聪明的男孩儿 。","source":"tatoeba"}],
+"jade":[{"en":"In that exhibition you will see jade carvings by several famous masters.","zh":"","source":"tatoeba"},{"en":"It's exciting the first time you do it, but you soon become jaded.","zh":"","source":"tatoeba"}],
+"jail":[{"en":"I can't do that, because I don't want to go to jail.","zh":"我不会那样做的，因为我不想进监狱。","source":"tatoeba"},{"en":"He has spent ten years in jail for murder.","zh":"他因为谋杀案在牢里待了十年。","source":"tatoeba"}],
+"janitor":[{"en":"Tom started as a janitor, but he's now the president of the company.","zh":"汤姆最初是看门人，但现在他是公司的总裁了。","source":"tatoeba"},{"en":"Tom started working here as a janitor and now he's the boss.","zh":"","source":"tatoeba"}],
+"jaunt":[{"en":"We enjoy a jaunt to the wonderful, waterfront city of Portsmouth.","zh":"","source":"tatoeba"},{"en":"I will be taking a weekend food jaunt down to Portland.","zh":"","source":"tatoeba"}],
+"jewellery":[{"en":"Sir and Miss, what type of jewellery are you looking to buy?","zh":"先生小姐，你们买点什么首饰？","source":"tatoeba"},{"en":"She wears a lot of jewellery.","zh":"她戴很多珠宝。","source":"tatoeba"}],
+"jockey":[{"en":"I know that Tom used to be a disc jockey.","zh":"","source":"tatoeba"},{"en":"I know Tom used to be a disc jockey.","zh":"","source":"tatoeba"}],
+"journalism":[{"en":"In a democracy, it is important for journalism to be independent.","zh":"在民主国家，报刊的独立是很重要的。","source":"tatoeba"},{"en":"Tom studies journalism in Boston.","zh":"汤姆在波士顿学新闻学。","source":"tatoeba"}],
+"journalist":[{"en":"Mr Tani is not so much a scholar as a journalist.","zh":"Tani 先生与其说是学者，倒不如说是新闻工作者。","source":"tatoeba"},{"en":"The journalist wanted to write an article that would draw public attention to the issue.","zh":"记者想写一篇文章，以便引起公众对那件事情的注意。","source":"tatoeba"}],
+"journalistic":[{"en":"Her journalistic work was extremely time-consuming, which was unfortunately to the detriment of her literary career.","zh":"","source":"tatoeba"},{"en":"Journalistic text is not a literary work.","zh":"","source":"tatoeba"}],
+"journey":[{"en":"I want to go on a journey around the world if possible.","zh":"如果可能的话我想去世界各地旅行。","source":"tatoeba"},{"en":"A journey of a thousand miles begins with a single step.","zh":"千里之行，始于足下。","source":"tatoeba"}],
+"jovial":[{"en":"But these jovial sounds fell sadly on the ear of the ruined nobleman.","zh":"","source":"tatoeba"},{"en":"He forced a smile. He hardly had the energy left to keep up his jovial front.","zh":"","source":"tatoeba"}],
+"judge":[{"en":"Judging from the look of the sky, it may rain this afternoon.","zh":"从天色上判断，今天下午可能会下雨。","source":"tatoeba"},{"en":"Judging from the look of the sky, it is likely to rain.","zh":"看看天的样子，要下雨了。","source":"tatoeba"}],
+"judgement":[{"en":"We can rely on his judgement.","zh":"我们可以信赖他的判断。","source":"tatoeba"},{"en":"You are correct in your judgement.","zh":"你的判断是正确的。","source":"tatoeba"}],
+"judicial":[{"en":"The U.S. government has three branches: the executive, the legislative, and the judicial.","zh":"","source":"tatoeba"},{"en":"The new law guarantees the same judicial and social rights to homosexual couples.","zh":"","source":"tatoeba"}],
+"jumble":[{"en":"Everyone in the world starts off with goals set out and a clear purpose. But once these are jumbled up by the torrents of life, everything descends into chaos.","zh":"世界上任何人的独自活动，都是清醒而目标明确的，然而一旦被生活的洪流聚在一起，就变得混沌不清了。","source":"tatoeba"},{"en":"The magazine is a jumbled mishmash of jokes, stories, and serious news.","zh":"","source":"tatoeba"}],
+"junior":[{"en":"He's just a normal junior high school student, not particularly intelligent.","zh":"他只不过是个普普通通的中学生，不算特别聪明。","source":"tatoeba"},{"en":"He eventually married an Italian woman ten years his junior.","zh":"他最终和一个比他小十岁的意大利女人结了婚。","source":"tatoeba"}],
+"junk":[{"en":"Instead of eating real food, we just ate junk food all day.","zh":"我们整天吃的都是杂七杂八的零嘴，并没有甚么正规的食物下过肚。","source":"tatoeba"},{"en":"Tom has no idea what to do with all the junk in his garage.","zh":"汤姆不知道拿他车库的那些废物怎么办。","source":"tatoeba"}],
+"jurisdiction":[{"en":"The judge said that the case was outside of his jurisdiction.","zh":"","source":"tatoeba"},{"en":"Different jurisdictions often have distinct definitions of justifiable homicide.","zh":"","source":"tatoeba"}],
+"jurisprudence":[{"en":"I'm not familiar with Canadian jurisprudence.","zh":"","source":"tatoeba"},{"en":"Jews can be fired for taking off for the Sabbath in America, according to American religious freedom jurisprudence.","zh":"","source":"tatoeba"}],
+"justice":[{"en":"He believed that the war was fought in the cause of justice.","zh":"他相信，战争是为了正义而战。","source":"tatoeba"},{"en":"The accusations are shocking: money laundering, tax evasion and obstruction of justice.","zh":"这些指控令人震惊:洗钱、逃税和妨碍司法公正。","source":"tatoeba"}],
+"justify":[{"en":"The end does not always justify the means.","zh":"为了正当目的并非总是可以不择手段.","source":"tatoeba"},{"en":"The end justifies the means.","zh":"为了正当目的可以不择手段。","source":"tatoeba"}],
+"juvenile":[{"en":"Juvenile crimes have been increasing recently.","zh":"少年犯罪最近一直在增长。","source":"tatoeba"},{"en":"Layla was convicted as a juvenile for the murder of her parents.","zh":"","source":"tatoeba"}]
+});
