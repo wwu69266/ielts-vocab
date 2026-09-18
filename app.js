@@ -595,6 +595,7 @@ function ensureQueue() {
 }
 function cardHTML(w, item, idx, total) {
   var r = S.reviews[w.id];
+  ensureEx(w.word);   // 翻到这张卡就预取例句分片，翻面时无需等待
   var html = '<div class="flash"><div class="flash-head"><div>' +
     '<div class="word">' + esc(w.word) + '</div>' +
     '<div class="phonetic">' + esc(w.phonetic) + ' &nbsp;<span class="tag">' + esc(w.pos) + '</span> ' +
