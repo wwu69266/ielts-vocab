@@ -505,6 +505,13 @@ function renderDash() {
       '<div style="font-size:16px">' + esc(s[0]) + '</div>' +
       '<div class="muted small" style="margin-top:6px">' + esc(s[1]) + '</div>';
   }
+  var tip = $('dashBackupTip');
+  if (tip) {
+    var rn = Object.keys(S.reviews).length, nn = Object.keys(S.notebook).length, total = rn + nn;
+    tip.textContent = total >= 30
+      ? ('已积累 ' + total + ' 条学习记录（复习 ' + rn + ' · 生词本 ' + nn + '），建议点「备份数据」导出一份 JSON 保存。')
+      : '数据只保存在本机浏览器：清缓存或换设备前，请先导出 JSON 备份。';
+  }
 }
 
 /* ---------------- 学习页 ---------------- */
@@ -1367,6 +1374,7 @@ function bindStatic() {
   var bImp = $('bankImport'); if (bImp) bImp.addEventListener('click', function () { $('impFile').click(); });
   var ea = $('expAll'); if (ea) ea.addEventListener('click', exportAll);
   var bbt = $('btnBackupTop'); if (bbt) bbt.addEventListener('click', exportAll);
+  var brt = $('btnRestoreTop'); if (brt) brt.addEventListener('click', function () { var f = $('impFile'); if (f) f.click(); });
   var ew = $('expWordsCsv'); if (ew) ew.addEventListener('click', exportWordsCSV);
   var ib = $('impBtn'); if (ib) ib.addEventListener('click', function () { $('impFile').click(); });
   var rs = $('resetBtn');
