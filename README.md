@@ -23,6 +23,36 @@
 
 ---
 
+## 一点五、例句来源与生成方式
+
+词库里每个单词的例句由 `tools/build-examples.mjs` **离线批量生成**，按首字母分片存放在 `examples/ex-<letter>.js`，前端**按需加载**（打开某个词才加载对应分片，不会一次性拉取 2000+ 词）。
+
+来源优先级：
+
+| 优先级 | 来源 | 许可 | 说明 |
+|---|---|---|---|
+| 1 | **Tatoeba** 开源例句库 | CC-BY 2.0 | 真人类语料，含中英句对时直接用现成中译 |
+| 2 | **dictionaryapi.dev** | CC BY-SA 3.0（源 Wiktionary） | 免费、无需 key，取词条自带 example |
+| 3 | **ECDICT** | MIT | 本地有 `ecdict.csv` 时抽例句列 |
+| 4 | **generated** | — | 以上都没有时用模板生成，界面上标「生成」 |
+
+- **严禁抓取牛津 / 剑桥等受版权保护的网页**；设置页填了官方 key 才走官方 API，默认不启用。
+- 界面上每条例句带来源小标签（Tatoeba / 词典 / 生成），目标单词高亮显示。
+- 某词确实没有例句时，显示「暂无例句，点『在线补全』获取」。
+
+重新生成例句：
+
+```bash
+# 1) 下载 Tatoeba 语料到 _corpus/（约 27MB）
+node tools/build-examples.mjs index   # 建 Tatoeba 索引
+node tools/build-examples.mjs dict    # 补 dictionaryapi.dev
+node tools/build-examples.mjs mt      # 可选：MyMemory 免费翻译补中译（有额度）
+node tools/build-examples.mjs build   # 输出 examples/ 分片 + 报告
+```
+各阶段都有缓存，中断后重跑会自动跳过已处理的词。
+
+---
+
 ## 二、本地运行
 
 ```bash
