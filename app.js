@@ -514,6 +514,76 @@ function renderDash() {
   }
 }
 
+/* ---------------- 例句（分片按需加载） ----------------
+ * 真实例句由 tools/build-examples.mjs 离线生成，按首字母分片存放在 examples/ex-<letter>.js，
+ * 只有用到某个词时才加载对应分片，不会一次性拉取 2000+ 词的例句。
+ * 来源：Tatoeba(CC-BY 2.0) > dictionaryapi.dev(CC BY-SA 3.0/Wiktionary) > 内置模板（生成）
+ */
+var EX_LOADED = {}, EX_LOADING = {};
+var EX_LABEL = { tatoeba: 'Tatoeba', dictionaryapi: '词典', ecdict: '词典', generated: '生成', builtin: '内置' };
+
+function exShardOf(word) {
+  var c = String(word || '').charAt(0).toLowerCase();
+  return /[a-z]/.test(c) ? c : '_';
+}
+function ensureEx(word) {
+  var s = exShardOf(word);
+  if (!s || EX_LOADED[s] || EX_LOADING[s]) return;
+  EX_LOADING[s] = true;
+  var el = document.createElement('script');
+  el.src = 'examples/ex-' + s + '.js';
+  el.onload = function () { EX_LOADED[s] = true; EX_LOADING[s] = false; refreshExViews(); };
+  el.onerror = function () { EX_LOADED[s] = true; EX_LOADING[s] = false; };
+  document.head.appendChild(el);
+}
+function refreshExViews() {
+  var v = S.view;
+  if (v === 'study') renderStudy();
+  else if (v === 'bank') renderBank();
+  else if (v === 'nb') renderNotebook();
+}
+function exWordRe(word) {
+  var w = String(word || '').toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  if (!w) return null;
+  var alts = [w, w + 's', w + 'es', w + 'ed', w + 'ing', w + "'s"];
+  if (/e$/.test(w)) alts.push(w.slice(0, -1) + 'ing', w.slice(0, -1) + 'ed', w.slice(0, -1) + 'es');
+  if (/[^aeiou]y$/.test(w)) alts.push(w.slice(0, -1) + 'ies', w.slice(0, -1) + 'ied');
+  var uniq = [];
+  alts.forEach(function (x) { if (x && uniq.indexOf(x) < 0) uniq.push(x); });
+  try { return new RegExp('\\b(' + uniq.join('|') + ')\\b', 'gi'); } catch (e) { return null; }
+}
+function hlEx(en, word) {
+  var t = esc(en || '');
+  var re = exWordRe(word);
+  if (!re) return t;
+  return t.replace(re, '<span class="ex-hl">$1</span>');
+}
+function exBlock(w, max) {
+  max = max || 2;
+  var word = w && w.word ? w.word : '';
+  ensureEx(word);
+  var real = (window.IELTS_EX || {})[String(word).toLowerCase()];
+  var list = (real && real.length) ? real.slice(0, max) : null;
+  var html = '<div class="sect"><h4>例句</h4>';
+  if (list) {
+    list.forEach(function (x) {
+      html += '<div class="ex"><div class="en">' + hlEx(x.en, word) + '</div>' +
+        (x.zh ? '<div class="cn">' + esc(x.zh) + '</div>' : '') +
+        '<span class="ex-src">' + esc(EX_LABEL[x.source] || '词典') + '</span></div>';
+    });
+  } else if (w && w.examples && w.examples.length && w.examples[0] && w.examples[0].en) {
+    w.examples.slice(0, max).forEach(function (x) {
+      html += '<div class="ex"><div class="en">' + hlEx(x.en, word) + '</div>' +
+        (x.cn ? '<div class="cn">' + esc(x.cn) + '</div>' : '') +
+        '<span class="ex-src">生成</span></div>';
+    });
+    html += '<div class="muted small">暂无真实语料例句，点「在线补全」可再试。</div>';
+  } else {
+    html += '<div class="muted small">暂无例句，点「在线补全」获取。</div>';
+  }
+  return html + '</div>';
+}
+
 /* ---------------- 学习页 ---------------- */
 function ensureQueue() {
   if (S.studyMode === 'nb') {
@@ -540,13 +610,7 @@ function cardHTML(w, item, idx, total) {
   } else {
     html += '<div class="sect"><h4>释义</h4><div><b>' + esc(w.meaningCN) + '</b> <span class="muted">（' + esc(w.pos) + '）</span></div>' +
       '<div class="muted small">' + esc(w.meaningEN) + '</div></div>';
-    if (w.examples && w.examples.length) {
-      html += '<div class="sect"><h4>例句</h4>';
-      w.examples.forEach(function (ex) {
-        html += '<div class="ex"><div class="en">' + esc(ex.en) + '</div><div class="cn">' + esc(ex.cn || '') + '</div></div>';
-      });
-      html += '</div>';
-    }
+    html += exBlock(w, 2);
     if (w.roots) html += '<div class="sect"><h4>词根词缀</h4><div class="small">' + esc(w.roots) + '</div></div>';
     if (w.synonyms) html += '<div class="sect"><h4>同义替换</h4><div class="small">' + esc(w.synonyms) + '</div></div>';
     if (w.collocations) html += '<div class="sect"><h4>常见搭配</h4><div class="small">' + esc(w.collocations) + '</div></div>';
@@ -802,6 +866,7 @@ function renderNotebook() {
       (r && r.due ? '<span class="tag">下次 ' + ymd(new Date(r.due)).slice(5) + '</span>' : '') +
       (n.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') +
       '</div>' +
+      exBlock(w, 1) +
       '<div class="note-box"><textarea class="note-ta" data-id="' + n.wordId + '" placeholder="笔记：易错点 / 自己的例句 / 助记法">' + esc(n.note || '') + '</textarea></div>' +
       '<div class="item-actions">' +
       '<button class="btn sm" data-act="speak" data-id="' + n.wordId + '" data-lang="UK">英音</button>' +
@@ -849,6 +914,7 @@ function renderBank() {
       (w.difficulty ? '<span class="tag">难度 ' + w.difficulty + '</span>' : '') +
       (r && r.due ? '<span class="tag">下次 ' + ymd(new Date(r.due)).slice(5) + '</span>' : '') +
       (w.custom ? '<span class="tag warn">自定义</span>' : '') + '</div>' +
+      exBlock(w, 1) +
       '<div class="item-actions">' +
       '<button class="btn sm" data-act="speak" data-id="' + w.id + '" data-lang="UK">英音</button>' +
       '<button class="btn sm" data-act="speak" data-id="' + w.id + '" data-lang="US">美音</button>' +
